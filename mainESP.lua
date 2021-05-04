@@ -72,7 +72,7 @@ mt.__namecall = newcclosure(function(self, ...)
     local args = {...}
         if tostring(method) == "InvokeServer" and tostring(self) == "GetChance" then
             spawn(function()
-                wait(14)
+                wait(15)
 if imposter and pig then
     Notify({Title="The Murderer is";Text=imposter;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..imposter})
     Notify({Title="The Sheriff is";Text=pig;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..pig})
