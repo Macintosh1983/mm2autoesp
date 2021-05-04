@@ -13,24 +13,28 @@
 local function Notify(...)
     game.StarterGui:SetCore('SendNotification',...)
 end
-local plr = game.Players.LocalPlayer
+
+Notify({Title="MM2 AUTO ESP LOADED!";Text="Server Link Copied to clipboard!"})
+setclipboard("discord.gg/8gt6mqr") 
 
 function findsussy()
-    for i,v in pairs(game.Players:GetChildren()) do 
+    for i,v in pairs(game.Players:GetPlayers()) do 
         if v.Backpack:FindFirstChild("Knife") or v.Character:FindFirstChild("Knife") then
-        return v.Name
+            return v.Name
         end
     end
+    return nil
 end
 
 
 function findpig()
-    for i,v in pairs(game.Players:GetChildren()) do 
+    for i,v in pairs(game.Players:GetPlayers()) do 
         if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") then
-        return v.Name
-            end
-        end
+            return v.Name
+         end
     end
+     return nil
+end
 
 local imposter = findsussy()
 local pig = findpig()
@@ -74,15 +78,15 @@ function esp()
         end
     end
 
-    local mt = getrawmetatable(game)
+    local mt = getrawmetatable(game)--thank you yobder for funny auto detect 
     setreadonly(mt, false)
     local namecall = mt.__namecall
     mt.__namecall = newcclosure(function(self, ...)
         local method = getnamecallmethod()
         local args = {...}
         if tostring(method) == "InvokeServer" and tostring(self) == "GetChance" then
-            wait(18)
             spawn(function()
+                wait(14)
 if imposter and pig then
     Notify({Title="The Murderer is";Text=imposter;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..imposter})
     Notify({Title="The Sheriff is";Text=pig;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..pig})
@@ -92,3 +96,4 @@ end)
 end
 return namecall(self, table.unpack(args))
 end)
+
