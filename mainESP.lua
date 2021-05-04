@@ -13,9 +13,7 @@
 local function Notify(...)
     game.StarterGui:SetCore('SendNotification',...)
 end
-
-Notify({Title="MM2 AUTO ESP LOADED!";Text="Server Link Copied to clipboard!"})
-setclipboard("discord.gg/8gt6mqr") 
+local plr = game.Players.LocalPlayer
 
 function findsussy()
     for i,v in pairs(game.Players:GetChildren()) do 
@@ -31,8 +29,8 @@ function findpig()
         if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") then
         return v.Name
             end
+        end
     end
-end
 
 local imposter = findsussy()
 local pig = findpig()
@@ -76,21 +74,21 @@ function esp()
         end
     end
 
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-local namecall = mt.__namecall
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    local args = {...}
-    if tostring(method) == "InvokeServer" and tostring(self) == "GetChance" then
-        spawn(function()
-            wait(17)
-    if imposter and pig then
+    local mt = getrawmetatable(game)
+    setreadonly(mt, false)
+    local namecall = mt.__namecall
+    mt.__namecall = newcclosure(function(self, ...)
+        local method = getnamecallmethod()
+        local args = {...}
+        if tostring(method) == "InvokeServer" and tostring(self) == "GetChance" then
+            wait(18)
+            spawn(function()
+if imposter and pig then
     Notify({Title="The Murderer is";Text=imposter;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..imposter})
     Notify({Title="The Sheriff is";Text=pig;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..pig})
     esp()
-         end
-        end)
-    end
-    return namecall(self, table.unpack(args))
+ end
+end)
+end
+return namecall(self, table.unpack(args))
 end)
