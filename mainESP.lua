@@ -82,7 +82,9 @@ function esp()
         end
     end
 
-Notify({Title="MM2 AUTO ESP LOADED!";Text="JOIN THE DISCORD FOR UPDATES"})
+Notify({Title="MM2 AUTO ESP LOADED!";Text="ENJOY KILLING NUBS"})
+wait(1)
+Notify({Title="DISCORD INV COPIED";Text="JOIN THE DISCORD FOR UPDATES"})
 setclipboard("discord.gg/8gt6mqr")
 
 local mt = getrawmetatable(game)
