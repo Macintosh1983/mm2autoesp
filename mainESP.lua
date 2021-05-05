@@ -88,13 +88,24 @@ wait(1)
 Notify({Title="DISCORD INV COPIED";Text="JOIN THE DISCORD FOR UPDATES"})
 setclipboard("discord.gg/8gt6mqr")
 
-
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+local namecall = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+local method = getnamecallmethod()
+local args = {...}
+if tostring(method) == "InvokeServer" and tostring(self) == "GetChance" then
+spawn(function()
+    wait(14)
 if imposter and pig then
     Notify({Title="The Murderer is";Text=imposter;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..imposter})
     Notify({Title="The Sheriff is";Text=pig;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..pig})
     esp()
 end
-
 if imposter == ME then
     imposterESP()
-end
+            end
+        end)
+    end
+return namecall(self, table.unpack(args))
+end)
