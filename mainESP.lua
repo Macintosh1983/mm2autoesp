@@ -22,7 +22,7 @@ function findpig()
 
 local imposter = findsussy()
 local pig = findpig()
-local ME = game.Players.LocalPlayer
+local ME = game.Players.LocalPlayer.Name
 
 function imposterESP()--Gives Murderer an unfair advantage LOOOL
     for i,v in pairs(game.Players:GetPlayers()) do
