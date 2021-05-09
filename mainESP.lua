@@ -5,7 +5,7 @@ end
 --Basic inventory checks for Murderer and Sheriff
 function findsussy()
     for i,v in pairs(game.Players:GetChildren()) do 
-        if v.Backpack:FindFirstChild("Knife") or v.Character:FindFirstChild("Knife") and v.Classname == "Tool" then
+        if v.Backpack:FindFirstChild("Knife") or v.Character:FindFirstChild("Knife") and v.Name == "Tool" then
             return v.Name
                 end
             end
@@ -14,7 +14,7 @@ function findsussy()
 
 function findpig()
     for i,v in pairs(game.Players:GetChildren()) do 
-        if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") and v.Classname == "Tool" then
+        if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") and v.Name == "Tool" then
             return v.Name
                 end
             end
@@ -48,12 +48,12 @@ function allESP()
 end
 
 function sussycheck()
-    for i,v in pairs(game.Players.LocalPlayer) do 
-        if v.Backpack:FindFirstChildWhichIsA("Knife") then
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") and v.Name == ("Knife") then
             allESP()
-                        end
-                    end
-                end
+        end
+    end
+end
 
 function esp()
     for i,v in pairs(game.Players:GetPlayers()) do
@@ -97,18 +97,18 @@ local mt = getrawmetatable(game)
 setreadonly(mt, false)
 local namecall = mt.__namecall
 mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    local args = {...}
+local method = getnamecallmethod()
+local args = {...}
     if tostring(method) == "InvokeServer" and tostring(self) == "GetChance" then
         spawn(function()
-                    wait(14)
+            wait(14)
 if imposter and pig then
     Notify({Title="The Murderer is";Text=imposter;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..imposter})
     Notify({Title="The Sheriff is";Text=pig;Icon="http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..pig})
     esp()
     sussycheck()
- end
-end)
-    end
-    return namecall(self, table.unpack(args))
+        end
+    end)
+end
+return namecall(self, table.unpack(args))
 end)
